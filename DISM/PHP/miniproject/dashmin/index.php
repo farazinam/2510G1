@@ -1,5 +1,25 @@
 <?php
+$conn = mysqli_connect("localhost", "root", "", "ecommerce");
 include "header.php";
+
+$pro_count = "SELECT COUNT(*) AS product_count FROM product";
+$pro_Q = mysqli_query($conn, $pro_count);
+$fetch_pro_count = mysqli_fetch_array($pro_Q);
+
+
+$cat_count = "SELECT COUNT(*) AS category_count FROM category";
+$cat_Q = mysqli_query($conn, $cat_count);
+$fetch_cat_count = mysqli_fetch_array($cat_Q);
+
+
+$user_count = "SELECT COUNT(*) AS user_count FROM users";
+$user_Q = mysqli_query($conn, $user_count);
+$fetch_user_count = mysqli_fetch_array($user_Q);
+
+
+$role_count = "SELECT COUNT(*) AS role_count FROM `role`";
+$role_Q = mysqli_query($conn, $role_count);
+$fetch_role_count = mysqli_fetch_array($role_Q);
 ?>
 
 
@@ -10,8 +30,8 @@ include "header.php";
                         <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-chart-line fa-3x text-primary"></i>
                             <div class="ms-3">
-                                <p class="mb-2">Today Sale</p>
-                                <h6 class="mb-0">$1234</h6>
+                                <p class="mb-2">Product Count</p>
+                                <h6 class="mb-0"> <?php echo $fetch_pro_count["product_count"] ?></h6>
                             </div>
                         </div>
                     </div>
@@ -19,8 +39,8 @@ include "header.php";
                         <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-chart-bar fa-3x text-primary"></i>
                             <div class="ms-3">
-                                <p class="mb-2">Total Sale</p>
-                                <h6 class="mb-0">$1234</h6>
+                                <p class="mb-2">Category Count</p>
+                                <h6 class="mb-0"> <?php echo $fetch_cat_count["category_count"] ?></h6>
                             </div>
                         </div>
                     </div>
@@ -28,8 +48,8 @@ include "header.php";
                         <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-chart-area fa-3x text-primary"></i>
                             <div class="ms-3">
-                                <p class="mb-2">Today Revenue</p>
-                                <h6 class="mb-0">$1234</h6>
+                                <p class="mb-2">Total Accounts</p>
+                                <h6 class="mb-0"> <?php echo $fetch_user_count["user_count"] ?></h6>
                             </div>
                         </div>
                     </div>
@@ -37,8 +57,8 @@ include "header.php";
                         <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-chart-pie fa-3x text-primary"></i>
                             <div class="ms-3">
-                                <p class="mb-2">Total Revenue</p>
-                                <h6 class="mb-0">$1234</h6>
+                                <p class="mb-2">Total Role</p>
+                                <h6 class="mb-0"> <?php echo $fetch_role_count["role_count"] ?></h6>
                             </div>
                         </div>
                     </div>
